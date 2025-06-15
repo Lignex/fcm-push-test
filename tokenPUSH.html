@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Récupération FCM Token</title>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-messaging-compat.js"></script>
+  </head>
+  <body>
+    <h1>Token FCM</h1>
+    <pre id="token">En attente…</pre>
+
+    <script>
+      // 1) Copiez ici la config web fournie par Firebase (Paramètres du projet > Config Web)
+      const firebaseConfig = {
+        apiKey: "VOTRE_API_KEY",
+        authDomain: "VOTRE_PROJET.firebaseapp.com",
+        projectId: "VOTRE_PROJET_ID",
+        messagingSenderId: "VOTRE_SENDER_ID",
+        appId: "VOTRE_APP_ID"
+      };
+      firebase.initializeApp(firebaseConfig);
+
+      const messaging = firebase.messaging();
+
+      // 2) Demande de permission et récupération du token
+      messaging.requestPermission()
+        .then(() => messaging.getToken({
+          vapidKey: "VOTRE_VAPID_PUBLIC_KEY"  // visible dans Cloud Messaging > Config Web Push
+        }))
+        .then(token => {
+          document.getElementById('token').textContent = token;
+        })
+        .catch(err => {
+          document.getElementById('token').textContent = 'Erreur : ' + err;
+        });
+    </script>
+  </body>
+</html>
