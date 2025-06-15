@@ -13,11 +13,11 @@
     <script>
       // 1) Copiez ici la config web fournie par Firebase (Paramètres du projet > Config Web)
       const firebaseConfig = {
-        apiKey: "VOTRE_API_KEY",
-        authDomain: "VOTRE_PROJET.firebaseapp.com",
-        projectId: "VOTRE_PROJET_ID",
-        messagingSenderId: "VOTRE_SENDER_ID",
-        appId: "VOTRE_APP_ID"
+        apiKey: "AIzaSyDfO1WFc8BvQtNJYfxbwcZEmMVTxteJ7A8",
+        authDomain: "suividossiernotif.firebaseapp.com",
+        projectId: "suividossiernotif",
+        messagingSenderId: "370755576649",
+        appId: "1:370755576649:web:ef52994a2e12bd71c2b098"
       };
       firebase.initializeApp(firebaseConfig);
 
@@ -26,7 +26,7 @@
       // 2) Demande de permission et récupération du token
       messaging.requestPermission()
         .then(() => messaging.getToken({
-          vapidKey: "VOTRE_VAPID_PUBLIC_KEY"  // visible dans Cloud Messaging > Config Web Push
+          vapidKey: "fl7KoU6emZgJ9DTGBmWq6DNZCLG9RVIyWYALehPs2Oc"  // visible dans Cloud Messaging > Config Web Push
         }))
         .then(token => {
           document.getElementById('token').textContent = token;
